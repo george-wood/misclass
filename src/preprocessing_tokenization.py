@@ -147,6 +147,14 @@ df = narratives[:].copy()
 df_list = df.text.values.tolist() #store documents as list of lists
 
 
+df_list = df.text.values.tolist() #convert documents to list of strings
+input_list_normalization = input_normalization(texts = df_list) #create list normaization object
+df_list_normalized = input_list_normalization.normalization_lower()\
+                                            .normalization_whitespace()\
+                                                .strip_accents()\
+                                                    .texts #process list normalization object and return normalized documents as list of strings
+
+
 #stream spacy docs into lemmatization functions
 nlp = spacy.load('en_core_web_sm')
 
@@ -160,3 +168,8 @@ for doc in nlp.pipe(df_list_normalized, batch_size=20):
                                             .bag
 
     lemmatized_texts.append(lemmatized_doc)
+
+
+# Merge lemmatized_text with DataFrame with original Dataframe 
+raw_contents = pd.Series(lemmatized_texts,index=df.index)
+df_with_bag = pd.concat([df,raw_contents], axis=1)
