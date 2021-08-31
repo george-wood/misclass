@@ -1,7 +1,6 @@
 '''
 classes and functions used for texts processing and LDA implementation using gensim.  
 
-Usage examples to come.
 '''
 
 import unicodedata
@@ -113,7 +112,7 @@ class spacy_filters():
         self.bag_of_lem = None
         self.bag_of_text = None
         self.allowed_postags = ['NOUN', 'ADJ', 'VERB', 'ADV']
-        self.length = 1
+        self.length = 2
         self.doc_length = 2
         
     def extract_lemmas(self):
@@ -155,7 +154,7 @@ class spacy_filters():
         output:
             self: spacy_filters() object with token_list attribute updated with list of spacy token objects
         '''
-        self.token_list = [t.lemma_ for t in self.token_list if t.pos_ in self.allowed_postags]
+        self.token_list = [t for t in self.token_list if t.pos_ in self.allowed_postags]
         return(self)
 
     def filter_punc(self):
@@ -215,7 +214,7 @@ def gensim_vectorizing(texts,lower=5, upper=.5,restrictedVocabList=[]):
     print('Percentage of Remaining Vocabulary After Filtering Extremes: ', pct_vocab_kept)
     return(corpus, id2word)
 
-def spacity_calc(corpus, id2word):
+def sparcity_calc(corpus, id2word):
     '''
     input:
         corpus: defined corpus gensim object
