@@ -27,6 +27,30 @@ By looking **Topic Component Distributions** one can asses how good a model by d
 
 We can visualized how topic are distributed using the **pyLDAvis** packages.  The module maps each topic into a two dimensional principal component space.  Similar topics will have little distance between them and vague topics will have a wide distributions.  Ideally a model will produce well distributed topics of similar specificity.
 In order assign human interpretation to each document, we consider the **Most Representative Documents** for each topic. Given a topic assignment, the most representative documents have the highest sum total of topic contributions for that topic.  By evaluating this topics one gains an understanding of what types of documents are designated to this topic and what the model is incentivized to measure.
+
+## Findings/Conclusions
+
+We were interested in testing 3 different preprocessing techniques (no-gram, bi-gram and tri-gram) again 3 different topic number hyper parameters (5, 10, 15) to yield 9 unique base line models to evaluate.  The no-gram model with 10 topics gave  the most consistent and interpretable results.  The evaluation metrics are below:
+
+
+### Topic Component distributions
+
+![](src/topicdistribution_10topic_nogram_.png)
+
+### Principal Component Visualization
+
+![](src/pyLDAvis/lda_vis_combo_nogram_10topics1_screenshot_2.png)
+
+### Most Representative Documents
+
+| Document_No | raw text   |
+|-------|---------------|
+| 2988  |The victim alleges that the accused officers <br/> had no probable cause, arest warrant, or <br/> search warrant to enter their residence <br/> The victim alleges that the accused officers <br/> had no <br/> probable cause, arest warrant, or <br/> search warrant to enter their residence. <br/> The victim alleges that the accused officers <br/> had no probable cause, arest warrant, or <br/> search warrant to enter <br/> their residence. <br/> The victim alleges that the accused officers <br/> had no probable cause, arest warrant, or <br/> search warrant to enter their residence. <br/> The victim alleges that the accused officers <br/> h ad no probable cause, arest warrant, or <br/> search warrant to enter their residence|
+| 2987  |The victim alleges that the accused officers <br/> had no probable cause, arest warrant, or <br/> search warrant to enter their residence <br/> The victim alleges that the accused officers <br/> had no <br/> probable cause, arest warrant, or <br/> search warrant to enter their residence. <br/> The victim alleges that the accused officers <br/> had no probable cause, arest warrant, or <br/> search warrant to enter <br/> their residence. <br/> The victim alleges that the accused officers <br/> had no probable cause, arest warrant, or <br/> search warrant to enter their residence. <br/> The victim alleges that the accused officers <br/> h ad no probable cause, arest warrant, or <br/> search warrant to enter their residence|
+| 2519  |ENTERED RESIDENCE WITHOUT <br/> PERMISSION AND SEARCHED <br/> RESIDENCE. <br/> The reporting party alleges the accused <br/> conducted an illegal search of his residence <br/> in that they entered without <br/> permission or <br/> warrant.|
+| 4552  |The Reporting Party alleged the accused <br/> officers entered her home with a search <br/> warrant and broke her front door, searched <br/> and completely ransacked her apartment.|
+| 33258  |that the accused failed to <br/> indebtedness to the City of <br/> accused failed to provide <br/> debt to the human <br/> and administration which <br/> section E01-07, section IV-A- <br/> that the accused <br/> violated <br/> she was disobedient of a <br/> writing and orally.|
+
 ### Summary
 Looking at the topic distribution we infer the following human interpretations for each topic.
 | Topic Number | Topic Interpretation |
